@@ -89,6 +89,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 print('message');
+                scoreKeeper.add(trueIcon());
                 setState(() {
                   scoreKeeper.add(trueIcon());
                 });
