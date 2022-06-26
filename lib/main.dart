@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Quizzler());
@@ -91,7 +88,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                log('message');
+                print('message');
                 setState(() {
                   scoreKeeper.add(trueIcon());
                 });
