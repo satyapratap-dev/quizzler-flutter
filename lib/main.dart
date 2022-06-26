@@ -28,7 +28,16 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
-    List<Icon> scoreKeeper = [];
+    List<Icon> scoreKeeper = [
+      Icon(
+        Icons.close,
+        color: Colors.green,
+      ),
+      Icon(
+        Icons.close,
+        color: Colors.green,
+      ),
+    ];
 
     Icon trueIcon() {
       return Icon(
