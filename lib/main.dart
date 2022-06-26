@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Quizzler());
@@ -27,6 +28,22 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
+    List<Icon> scoreKeeper = [];
+
+    Icon trueIcon() {
+      return Icon(
+        Icons.check,
+        color: Colors.green,
+      );
+    }
+
+    Icon falseIcon() {
+      return Icon(
+        Icons.close,
+        color: Colors.green,
+      );
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -62,6 +79,9 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                setState(() {
+                  scoreKeeper.add(trueIcon());
+                });
               },
             ),
           ),
@@ -80,11 +100,17 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
+                //The user picked true.
+                setState(() {
+                  scoreKeeper.add(falseIcon());
+                });
               },
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
+        Row(
+          children: scoreKeeper,
+        ),
       ],
     );
   }
