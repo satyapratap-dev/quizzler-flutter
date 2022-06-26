@@ -110,12 +110,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Column(
-          children: [
-            ListView(
-              children: scoreKeeper,
-              scrollDirection: Axis.horizontal,
-            ),
-          ],
+          children: scoreKeeper,
         ),
       ],
     );
