@@ -111,9 +111,12 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Scrollbar(
           isAlwaysShown: true,
-          child: ListView(
-            children: scoreKeeper,
+          child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
+            child: ListView(
+              children: scoreKeeper,
+              scrollDirection: Axis.horizontal,
+            ),
           ),
         ),
       ],
