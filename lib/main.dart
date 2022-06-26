@@ -113,6 +113,7 @@ class _QuizPageState extends State<QuizPage> {
           isAlwaysShown: true,
           child: ListView(
             children: scoreKeeper,
+            scrollDirection: Axis.horizontal,
           ),
         ),
       ],
