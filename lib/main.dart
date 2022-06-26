@@ -38,7 +38,7 @@ class _QuizPageState extends State<QuizPage> {
     Icon falseIcon() {
       return Icon(
         Icons.close,
-        color: Colors.green,
+        color: Colors.red,
       );
     }
 
@@ -109,8 +109,11 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        Row(
-          children: scoreKeeper,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: scoreKeeper,
+          ),
         ),
       ],
     );
