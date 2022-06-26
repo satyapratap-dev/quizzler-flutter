@@ -109,8 +109,11 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        Row(
-          children: scoreKeeper,
+        Scrollbar(
+          isAlwaysShown: true,
+          child: Row(
+            children: scoreKeeper,
+          ),
         ),
       ],
     );
