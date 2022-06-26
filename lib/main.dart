@@ -109,11 +109,13 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: ListView(
-            children: scoreKeeper,
+        Expanded(
+          child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
+            child: ListView(
+              children: scoreKeeper,
+              scrollDirection: Axis.horizontal,
+            ),
           ),
         ),
       ],
