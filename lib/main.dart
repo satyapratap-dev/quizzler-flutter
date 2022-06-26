@@ -85,9 +85,10 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  scoreKeeper.add(trueIcon());
-
-                  if (questionNumber <= questions.length) questionNumber++;
+                  if (questionNumber <= questions.length) {
+                    questionNumber++;
+                    scoreKeeper.add(trueIcon());
+                  }
                 });
               },
             ),
@@ -111,9 +112,10 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked false.
                 //The user picked true.
                 setState(() {
-                  scoreKeeper.add(falseIcon());
-
-                  if (questionNumber <= questions.length) questionNumber++;
+                  if (questionNumber <= questions.length) {
+                    questionNumber++;
+                    scoreKeeper.add(falseIcon());
+                  }
                 });
               },
             ),
