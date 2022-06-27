@@ -56,7 +56,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quesions.questionsBank[questionNumber].questionText.toString(),
+                quesions.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -83,14 +83,12 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  if (questionNumber < quesions.questionsBank.length) {
-                    if (quesions.questionsBank[questionNumber].questionAnswer == true)
-                      scoreKeeper.add(trueIcon());
-                    else
-                      scoreKeeper.add(falseIcon());
+                  if (quesions.getQuestionAnswer(questionNumber) == true)
+                    scoreKeeper.add(trueIcon());
+                  else
+                    scoreKeeper.add(falseIcon());
 
-                    questionNumber++;
-                  }
+                  questionNumber++;
                 });
               },
             ),
@@ -114,14 +112,12 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked false.
                 //The user picked true.
                 setState(() {
-                  if (questionNumber < quesions.questionsBank.length) {
-                    if (quesions.questionsBank[questionNumber].questionAnswer == false)
-                      scoreKeeper.add(trueIcon());
-                    else
-                      scoreKeeper.add(falseIcon());
+                  if (quesions.getQuestionAnswer(questionNumber) == false)
+                    scoreKeeper.add(trueIcon());
+                  else
+                    scoreKeeper.add(falseIcon());
 
-                    questionNumber++;
-                  }
+                  questionNumber++;
                 });
               },
             ),
