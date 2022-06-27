@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -32,6 +33,11 @@ class _QuizPageState extends State<QuizPage> {
     'A slug\'s blood is green.'
   ];
   int questionNumber = 0;
+  List<Question> questionsBank = [
+    Question('You can lead a cow down stairs but not up stairs.', false),
+    Question('Approximately one quarter of human bones are in the feet.', true),
+    Question('A slug\'s blood is green.', true),
+  ];
   @override
   Widget build(BuildContext context) {
     Icon trueIcon() {
@@ -58,7 +64,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                questionsBank[questionNumber].questionText.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -85,9 +91,13 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  if (questionNumber < questions.length) {
+                  if (questionNumber < questionsBank.length) {
+                    if (questionsBank[questionNumber].questionAnswer == true)
+                      scoreKeeper.add(trueIcon());
+                    else
+                      scoreKeeper.add(falseIcon());
+
                     questionNumber++;
-                    scoreKeeper.add(trueIcon());
                   }
                 });
               },
@@ -113,8 +123,12 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked true.
                 setState(() {
                   if (questionNumber < questions.length) {
+                    if (questionsBank[questionNumber].questionAnswer == false)
+                      scoreKeeper.add(trueIcon());
+                    else
+                      scoreKeeper.add(falseIcon());
+
                     questionNumber++;
-                    scoreKeeper.add(falseIcon());
                   }
                 });
               },
