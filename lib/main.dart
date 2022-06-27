@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
+import 'QuizBrain.dart';
 
 void main() => runApp(Quizzler());
 
@@ -27,17 +27,9 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  List<String> questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
-  ];
   int questionNumber = 0;
-  List<Question> questionsBank = [
-    Question('You can lead a cow down stairs but not up stairs.', false),
-    Question('Approximately one quarter of human bones are in the feet.', true),
-    Question('A slug\'s blood is green.', true),
-  ];
+  QuizBrain quesions = QuizBrain();
+
   @override
   Widget build(BuildContext context) {
     Icon trueIcon() {
@@ -64,7 +56,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionsBank[questionNumber].questionText.toString(),
+                quesions.questionsBank[questionNumber].questionText.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -91,8 +83,8 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  if (questionNumber < questionsBank.length) {
-                    if (questionsBank[questionNumber].questionAnswer == true)
+                  if (questionNumber < quesions.questionsBank.length) {
+                    if (quesions.questionsBank[questionNumber].questionAnswer == true)
                       scoreKeeper.add(trueIcon());
                     else
                       scoreKeeper.add(falseIcon());
@@ -122,8 +114,8 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked false.
                 //The user picked true.
                 setState(() {
-                  if (questionNumber < questions.length) {
-                    if (questionsBank[questionNumber].questionAnswer == false)
+                  if (questionNumber < quesions.questionsBank.length) {
+                    if (quesions.questionsBank[questionNumber].questionAnswer == false)
                       scoreKeeper.add(trueIcon());
                     else
                       scoreKeeper.add(falseIcon());
