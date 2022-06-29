@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'QuizBrain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(Quizzler());
 
@@ -45,6 +46,19 @@ class _QuizPageState extends State<QuizPage> {
       );
     }
 
+    void verifyAnswer(bool userAnswer) {
+      //The user picked true.
+      setState(() {
+        if (quesions.getQuestionAnswer() == userAnswer)
+          scoreKeeper.add(trueIcon());
+        else
+          scoreKeeper.add(falseIcon());
+
+        quesions.getNextQuestion();
+        Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.").show();
+      });
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,15 +94,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked true.
-                setState(() {
-                  if (quesions.getQuestionAnswer() == true)
-                    scoreKeeper.add(trueIcon());
-                  else
-                    scoreKeeper.add(falseIcon());
-
-                  quesions.getNextQuestion();
-                });
+                verifyAnswer(true);
               },
             ),
           ),
@@ -108,16 +114,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
-                //The user picked true.
-                setState(() {
-                  if (quesions.getQuestionAnswer() == false)
-                    scoreKeeper.add(trueIcon());
-                  else
-                    scoreKeeper.add(falseIcon());
-
-                  quesions.getNextQuestion();
-                });
+                verifyAnswer(false);
               },
             ),
           ),

@@ -2,6 +2,10 @@ import 'package:quizzler/question.dart';
 
 class QuizBrain {
   int _questionNumber = 0;
+  int totalQuestions = 0;
+  QuizBrain() {
+    totalQuestions = _questionsBank.length;
+  }
   List<Question> _questionsBank = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
