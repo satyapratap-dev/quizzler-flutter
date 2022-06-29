@@ -49,13 +49,34 @@ class _QuizPageState extends State<QuizPage> {
     void verifyAnswer(bool userAnswer) {
       //The user picked true.
       setState(() {
+        if (scoreKeeper.length == quesions.totalQuestions) {
+          Alert(
+            context: context,
+            type: AlertType.error,
+            title: "Finished",
+            desc: "Yo've reached the end of the quiz",
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "CANCEL",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () {
+                  scoreKeeper.clear();
+                  Navigator.pop(context);
+                },
+                width: 120,
+              )
+            ],
+          ).show();
+          return;
+        }
         if (quesions.getQuestionAnswer() == userAnswer)
           scoreKeeper.add(trueIcon());
         else
           scoreKeeper.add(falseIcon());
 
         quesions.getNextQuestion();
-        Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.").show();
       });
     }
 
