@@ -49,10 +49,17 @@ class _QuizPageState extends State<QuizPage> {
     void verifyAnswer(bool userAnswer) {
       //The user picked true.
       setState(() {
-        if (scoreKeeper.length == quesions.totalQuestions) {
+        if (scoreKeeper.length != quesions.totalQuestions) {
+          if (quesions.getQuestionAnswer() == userAnswer)
+            scoreKeeper.add(trueIcon());
+          else
+            scoreKeeper.add(falseIcon());
+
+          quesions.getNextQuestion();
+        } else {
           Alert(
             context: context,
-            type: AlertType.error,
+            type: AlertType.success,
             title: "Finished",
             desc: "Yo've reached the end of the quiz",
             buttons: [
@@ -69,14 +76,7 @@ class _QuizPageState extends State<QuizPage> {
               )
             ],
           ).show();
-          return;
         }
-        if (quesions.getQuestionAnswer() == userAnswer)
-          scoreKeeper.add(trueIcon());
-        else
-          scoreKeeper.add(falseIcon());
-
-        quesions.getNextQuestion();
       });
     }
 
