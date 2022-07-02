@@ -33,4 +33,8 @@ class QuizBrain {
   void getNextQuestion() {
     if (_questionNumber < _questionsBank.length - 1) _questionNumber++;
   }
+
+  void resetQuestions() {
+    _questionNumber = 0;
+  }
 }
